@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery 框架学习</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- 2.1.4版本 -->
+    <script>
+        window.onload = function(){
+            console.log("网页全部内容加载完成")
+        }
+        // $(document).ready(function(){
+        //     console.log("全部dom")
+        // })
+        $(function(){//简写形式
+            console.log("全部dom加载完成")
+            // $("button").click(function(){
+            //     $("p").hide(1000, function(){
+            //         console.log("hide!!!")
+            //     })
+            // })
+            $("button.hide").click(function(){
+                $("p").toggle(1000, function(){
+                    console.log("hide or show")
+                })
+            })
+            // $(".event").mouseenter(function(){
+            //     console.log("mouseenter")
+            // })
+            // $(".event").mouseleave(function(){
+            //     console.log("mouseleave")
+            // })
+            // $(".event").mouseup(function(){
+            //     console.log("mouseup")
+            // })
+            // $(".event").mousedown(function(){
+            //     console.log("mousedown")
+            // })
+            $(".event button").click(function(){
+                console.log($(".red"))
+                $(".red").fadeToggle("slow")
+                $(".green").fadeToggle(2000)
+                $(".blue").fadeToggle("fast")
+            })
+            $("button.slide").click(function(){
+                $(".content").slideToggle()
+            })
+            $(".animate button").click(function(){
+                $(".animateBox").animate({
+                    width: "+=100px",
+                    height: "+=100px"
+                }).animate({
+                    width: "-=100px",
+                    height: "-=100px"
+                }).animate({
+                    width: "+=100px",
+                    height: "+=100px"
+                }) // 使用指令链的形式 连续执行多个指令
+            })
+        })
+    </script>
+    <style>
+        .red{
+            width: 100px;
+            height: 100px;            
+            background-color: red;
+        }
+        .green{
+            width: 100px;
+            height: 100px;            
+            background-color: green;
+        }
+        .blue{
+            width: 100px;
+            height: 100px;            
+            background-color: blue;
+        }
+        .content{
+            border: 1px solid black;
+        }
+        .animateBox{
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>这是一段文字</p>
+        <button class="hide">点击隐藏/显示上面的文字</button>
+    </div>
+    <div class="event">
+        <button>点击淡入或淡出</button>
+        <div class="red"></div>
+        <div class="green"></div>
+        <div class="blue"></div>
+    </div>
+    <div class="slide">
+        <button class="slide">点击滑入 滑出</button>
+        <div class="content">
+            <p>pppppp</p>
+            <p>pppppp</p>
+        </div>
+    </div>
+    <div class="animate">
+        <button>点击动画效果</button>
+        <div class="animateBox"></div>
+    </div>
+</body>
+</html>

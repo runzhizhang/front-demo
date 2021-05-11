@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清除游戏</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #2a2218;
+        }
+        .box{
+            width: 920px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        .top{
+            width: 100%;
+            height: 170px;
+        }
+        .top .title{
+            font-size: 25px;
+            text-align: center;
+            color: #f2f2f2;
+            font-weight: bold;
+            line-height: 70px;
+        }
+        .box .desc{
+            line-height: 50px;
+            text-align: center;
+            color: white;
+        }
+        .box .button{
+            width: 140px;
+            height: 40px;  
+            margin: 0 auto;
+        }
+        .box .button input{
+            width: 140px;
+            height: 40px;
+            background-color: #a73f2d;
+            border: 1px solid #241d13;
+            border-radius: 5px;
+            font-size: 16px;            
+        }
+        .box .bottom{
+            background-color: white;
+            height: 430px;
+            display: flex;
+        }
+        .box .bottom .left{
+            border-width: 0 2px 0 0;
+            border-style: solid;
+            border-color: black;
+            width: 130px;
+        }
+        .box .bottom .right{
+            flex: 0;
+            position: relative;
+        }
+        .box .bottom .right img{
+            display: none;
+            position: absolute;
+            left: 0;
+        }
+        @keyframes shakeX {
+            from,
+            to {
+                transform: translate3d(0, 0, 0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translate3d(-10px, 0, 0);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translate3d(10px, 0, 0);
+            }
+        }
+
+
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./doMove.js"></script>
+    <script>
+        $(function(){
+            console.log($("input")[0])   
+            $("input").eq(0).click(function(){
+                console.log("start...")
+                var inp = $("input").eq(0)
+                inp.val("游戏进行中...")
+                inp.attr("disabled", true)
+                inp.css({
+                    "font-weight": '2px',
+                    "color": "white"
+                })
+                //start...
+                play()                
+            })
+            var score = 0 // 得分
+            var lose = 0 // 失分
+            // 图片的高度为24px
+            var img = $('img').eq(0)
+            function play(){
+                var n = Math.random() % 9 + 1
+                var right = parseInt($('.right').eq(0).css('width'))
+                var height = parseInt($('.right').eq(0).css('height'))-24
+                // img.attr({"display": "block", "src": './img/' + n + '.png'})
+                img.css("display", "block")
+                console.log(height)
+                // img.css('top', '100px')
+                doMove(img, 'top', 0, height, 10, function(){
+                    // 结束效果
+                    img.attr('src', './img/qq.png')
+                    img.css({
+                        "animation-name": 'shakeX',
+                        "animation-duration": '0.3s',
+                        "animation-iteration-count": 3
+                    })
+                    // img.css('display', 'none') -- 同步异步的执行顺序
+                })
+            }
+                       
+        })
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            <p class="title">你的鼠标有多快？</p>
+            <p class="desc">游戏说明：点击“开始游戏”，随机掉落QQ表情，点击它，别让其掉落！！！</p>
+            <div class="button"><input type="button" value="开始游戏"></div>
+        </div>
+        <div class="bottom">
+            <div class="left">
+                <p>得分：<span>0</span></p>
+                <p>失分：<span>0</span></p>
+            </div>
+            <div class="right">
+                <!-- 游戏区域 -->
+                <img src="./img/8.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

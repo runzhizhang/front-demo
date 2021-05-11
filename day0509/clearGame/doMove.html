@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运动函数的封装</title>
+    <style>
+        .container{
+            height: 100px;
+            width: 100%;
+            background-color: rgb(214, 199, 228);
+            position: relative;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(173, 103, 238);
+            position: absolute;
+            left: 0;
+        }
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(function(){
+            console.log("loading...")
+            var box = $('.box').eq(0)
+            /*
+                1. dom元素
+                2. 属性值
+                3. startValue
+                4. endValue
+                5. 速度
+                6. 回调函数
+            */
+            function doMove(dom, domStyle, startValue, endValue, speed, fn){
+                clearInterval(dom.timer) //清除之前的定时器
+                dom.css(domStyle, startValue + 'px')
+                dom.timer = setInterval(function(){
+                    var stop = false // 判断运动效果是否执行完成
+                    var value = parseInt(dom.css(domStyle))
+                    if(value >= endValue){
+                        stop = true
+                        // 运动结束
+                        fn()
+                        clearInterval(dom.timer)
+                    }else{
+                        dom.css(domStyle, value + speed + 'px')
+                    }
+                }, 100)
+            }
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</body>
+</html>

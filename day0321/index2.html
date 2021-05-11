@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery HTML</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>    
+    <script>
+        $(function(){
+            console.log($(".content").text())
+            console.log($(".content").html())
+            $("button.getValue").click(function(){
+                // alert($("input").val())
+            })
+            $("button.repeat").click(function(){
+                $(".content p").text(function(i, value){
+                    return value + value
+                })
+            })
+            // 样式切换
+            $("button.reStyle").click(function(){
+                console.log("reStyle")
+                // console.log($(".content p").css("font-size", "12px"))
+                $(".content p").toggleClass("addP")
+                console.log($(".content p").css("font-size"))
+            })   
+            $("button.append").click(function(){
+                $(".addDele ol").append("<li>333</li>")
+            })
+            $("button.prepend").click(function(){
+                $(".addDele ol").prepend("<li>333</li>")
+            })    
+            $("button.after").click(function(){
+                $(".addDele ol").after("<li>333</li>")
+            })
+            $("button.before").click(function(){
+                $(".addDele ol").before("<li>333</li>")
+            })                     
+        })
+    </script>
+    <style>
+        .content p{
+            font-size: 2em;
+            color: red;
+        }
+        .addP{
+            color: black;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="content"><p>ppppppp</p></div>
+        <input type="text" value="">
+        <button class="getValue">显示</button>
+        <button class="repeat">点击重复显示文本</button>
+        <button class="reStyle">点击切换样式</button>        
+    </div>
+    <div class="addDele">
+        <ol>
+            <li>11111</li>
+            <li>22222</li>
+        </ol>
+        <button class="append">append</button>
+        <button class="prepend">prepend</button>
+        <button class="after">after</button>
+        <button class="before">before</button>
+    </div>
+</body> 
+</html>
