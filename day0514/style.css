@@ -1,0 +1,40 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.container{
+  /* border: solid 1px black; */
+  margin: 160px 200px;
+}
+.header{
+  list-style: none;
+  border-bottom: solid 3px #ff1000;
+  font-size: 0;/* 消除水平li之间的间隔 */
+}
+.header li{
+  display: inline-block;
+  /* border: solid 1px black; */
+  width: 100px;
+  line-height: 2em;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+}
+.header .sec{
+  background-color: #ff1000;
+}
+.listContent{
+  list-style: none;
+}
+.listContent li{
+  font-size: 16px;
+  line-height: 30px;
+  height: 30px;
+  color: rgb(0,0,238);
+  text-decoration: underline;
+}
+.tips{
+  background: #ff1000;
+  width: 100px;
+  height: 100px;
+}
