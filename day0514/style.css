@@ -34,7 +34,17 @@
   text-decoration: underline;
 }
 .tips{
-  background: #ff1000;
-  width: 100px;
-  height: 100px;
+  border: solid #ff1000 2.5px;
+  width: 200px;
+  height: 140px;
+  position: absolute;
+}
+.tips h3{
+  line-height: 2em;
+}
+.tips li{
+  list-style: none;
+  font-size: 16px;
+  border-bottom: solid #cccccc 1px;
+  height: 30px;
 }
