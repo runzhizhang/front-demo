@@ -41,7 +41,7 @@ $(function () {
       backData = JSON.parse(data).list
     }
   })
-  function render (dataList) { //data数组形式的数据
+  function render (dataList) { // data数组形式的数据
     let listContent = $('.listContent')[0]
     if (dataList) {
       // 页面渲染之前清空
